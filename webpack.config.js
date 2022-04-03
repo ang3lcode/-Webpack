@@ -1,5 +1,6 @@
 const path = require('path'); // Para trabajar con archivos y rutas de directorios
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'production', // le pasamos explicitamente el modo desde el archivo
@@ -25,6 +26,12 @@ module.exports = {
                 use: {
                 loader: "babel-loader"
                 }
+            },
+            {
+                test: /\.css|.styl$/i,
+                use: [MiniCssExtractPlugin.loader,
+                  'css-loader'
+                ],
             }
         ]
     },
@@ -33,7 +40,8 @@ module.exports = {
             inject: true,
             template: './public/index.html',
             filename: './index.html'
-        })
+        }),
+        new MiniCssExtractPlugin(),
     ]
     
 }

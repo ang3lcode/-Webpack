@@ -1,6 +1,7 @@
-import sum from './utils/sum.js';
+import template from './templates/Template.js';
+import './styles/main.css';
 
-const hello = 'hello';
-
-console.log(hello);
-console.log(sum(2, 2));
+(async function App() {
+    const main = null || document.getElementById('main');
+    main.innerHTML = await template();
+  })();
