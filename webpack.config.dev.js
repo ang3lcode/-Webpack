@@ -59,7 +59,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      inject: true,
+      inject: 'body',
       template: './public/index.html',
       filename: './index.html'
     }),
@@ -75,5 +75,12 @@ module.exports = {
       ]
     }),
     new Dotenv(),
-  ]
+  ],
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    compress: true,
+    historyApiFallback: true,
+    port: 8080,
+    open: true,
+  }
 }
